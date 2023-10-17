@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 2023_10_17_051336) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,6 +62,9 @@ ActiveRecord::Schema.define(version: 2023_10_17_051336) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -85,11 +92,24 @@ ActiveRecord::Schema.define(version: 2023_10_17_051336) do
   end
 
   create_table "order_details", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
+    t.integer "amount", null: false
+    t.integer "include_tax", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "total_price", null: false
+    t.string "name", null: false
+    t.string "postcode", null: false
+    t.string "addresses", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.integer "postage", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
