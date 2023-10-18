@@ -1,10 +1,7 @@
 class Item < ApplicationRecord
-<<<<<<< HEAD
-  has_one_attached :item_image
 
-  has_many :cart_items
+  has_one_attached :item_image
   has_many :order_details
-  belongs_to :genre
 
   validates :name, presence: true
   validates :introduction, presence: true
@@ -18,14 +15,12 @@ class Item < ApplicationRecord
     end
     item_image.variant(resize_to_limit: [width, height]).processed
   end
-
-  def add_tax_price
-    (self.without_tax * 1.10).round
-  end
-=======
+  
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   belongs_to :genre
   
->>>>>>> f0aa20c9b86b6a831d4584428daa842e86f8e00a
+  def  add_tax_price #単価(税込)
+    (self.without_tax * 1.1)
+  end
 end
