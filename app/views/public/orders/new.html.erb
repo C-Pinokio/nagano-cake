@@ -1,1 +1,23 @@
-
+<div class= "container">
+  <div class= "row">
+    <div　class="col-md-2">
+      <h4>注文情報入力</h4>
+    </div>
+    <div　class="col-md-1">
+      <h5>支払方法</h5>
+      <%= form_with model: @order do |f| %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], value: Order.payment_methods.key(0) %><br>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], value: Order.payment_methods.key(1) %>
+      
+        <h5>お届け先</h5>
+        <%= f.radio_button :address_option, 1 %>
+        <%= f.label :address_option, "ご自身の住所" %>
+        <%= f.select :address_id, options_from_collection_for_select(@customer.address.all, :id, :address_display) %>
+      
+      <% end %>
+      
+        
+          
+    </div>
