@@ -1,6 +1,18 @@
 <div class="col-md-6 offset-md-1">
-  <%= flash[:notice] %>
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <h4 class="my-3 ml-4">配送先/登録一覧</h4>
+  
+  <!--エラー文-->
+  <% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
   
   <!--配送先フォーム-->
   <%= render "form", address: @address %>

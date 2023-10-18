@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
     
   def index
-    @addresses = current_customer.addresses.all
+    @addresses = Address.all #current_customer.address.allへ変更すること
     @address = Address.new
     
   end
@@ -14,6 +14,7 @@ class Public::AddressesController < ApplicationController
     @address = current_customer.addresses.new(address_params)
     @addresses = current_customer.addresses.all
     if @address.save
+      flash[:notice] = "配送先の保存に成功しました"
       redirect_to request.referer
     else
       render :index
@@ -33,7 +34,9 @@ class Public::AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
+    flash[:notice] = "配送先を削除しました"
     redirect_to request.referer
+    
   end
   
   private
