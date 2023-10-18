@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @genre = Genre.all
+    @item = Item.all
     @items = Item.page(params[:page])
   end
 
