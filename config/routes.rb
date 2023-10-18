@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     patch 'customers/infomation' => 'customers#update'
     get 'customers/confirm' => 'customers#confirm'
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :items, only: [:index, :show] 
+    resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       #collection doは７つのアクション以外の独自のアクションをリソースに追加するものです
       collection do
