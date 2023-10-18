@@ -23,12 +23,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'customers/mypage' => 'customers#show' #顧客のマイページ
-    get 'customers/infomation/edit' => 'customers#edit' #登録情報編集
-    patch 'customers/infomation' => 'customers#update' #登録情報更新
-    get 'customers/confirm' => 'customers#confirm' #退会確認画面
-    patch 'customers/withdraw' => 'customers#withdraw' #退会処理
-    resources :items, only: [:index, :show] #商品一覧、詳細
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/infomation/edit' => 'customers#edit'
+    patch 'customers/infomation' => 'customers#update'
+    get 'customers/confirm' => 'customers#confirm'
+    patch 'customers/withdraw' => 'customers#withdraw'
+    resources :items, only: [:index, :show] 
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       #collection doは７つのアクション以外の独自のアクションをリソースに追加するものです
       collection do
