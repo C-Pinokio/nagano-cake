@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
-        post 'check'
+        post 'confirm'
         get 'complete'
       end
     end
