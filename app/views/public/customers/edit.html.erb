@@ -9,7 +9,7 @@
         
         <table class="table table-borderless">
             <tr>
-              <td>氏名</td>
+              <td><%= f.label :name, "氏名" %></td>
               <td><%= f.text_field :last_name %></td>
               <td><%= f.text_field :first_name %></td>
             </tr>
@@ -21,7 +21,7 @@
             </tr>
             
             <tr>
-              <td>郵便番号</td>
+              <td><%= f.label :postcode, "郵便番号" %></td>
               <td><%= f.text_field :postcode %></td>
             </tr>
             
