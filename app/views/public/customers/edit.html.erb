@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
-      <%= form_with model: @customer, url: customers_mypage_path do |f| %>
+      <%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
         
         <table class="table table-borderless">
             <tr>
@@ -42,7 +42,7 @@
             
             <tr>
               <td></td>
-              <td><%= link_to "編集内容を保存" %></td>
+              <td><%= f.submit "編集内容を保存" %></td>
             </tr>
         </table>
         
