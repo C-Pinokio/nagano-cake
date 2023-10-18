@@ -1,0 +1,27 @@
+<div class="form-group">
+  <%= f.label :item_image, "商品画像", style: "margin-right:60px;" %>
+  <%= f.file_field :item_image, accept: "image/*" %>
+</div>
+<div class="form-group">
+  <%= f.label :item_name, "商品名", style: "margin-right:75px;" %>
+  <%= f.text_field :name, placeholder:"商品名", size: "31x1" %>
+</div>
+<div class="form-group">
+  <%= f.label :item_introduction, "商品説明", style: "margin-right:60px;", class: "align-top" %>
+  <%= f.text_area :introduction, placeholder:"ここに説明文を記述します", size: "30x5" %>
+</div>
+<div class="form-group">
+  <%= f.label :genre, "ジャンル", style:"margin-right:60px;" %>
+  <%= f.collection_select :genre_id, genres, :id, :name, include_blank: "--選択してください--", size: "30x1" %>
+</div>
+<div class="form-group">
+  <%= f.label :without_tax, "税抜価格", style:"margin-right:60px;" %>
+  <%= f.text_field :without_tax, placeholder:"500", size: "30x1" %>
+</div>
+<div class="form-group">
+  <%= f.label :is_active, "販売ステータス", style:",margin-right:10px;" %>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active_true, "販売中", style:"margin-right:20px;" %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active_false, "販売停止中", style:"margin-right:20px;" %>
+</div>
