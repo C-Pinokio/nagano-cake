@@ -1,3 +1,41 @@
-<h1></h1>
-<h1>やっほー</h1>
-<%= @order.payment_method_i18n %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-3 ml-4">注文情報確認</h4>
+    <!--カート内商品一覧テーブル-->
+      <table class ="table bg-light">
+        <thead>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <td>
+              <%= image_tag cart_item.item.get_item_image(30,30) %><%= cart_item.item.name %>  
+            </td>
+            <td>
+              <%= cart_item.item.add_tax_price.to_s(:delimited) %>
+            </td>
+          <% end %>
+        </tbody>
+      </table>
+    
+        
+        
+        
+        
+      
+
+
+      <strong>支払方法</strong>
+      <%= @order.payment_method_i18n %><br>
+      <strong>お届け先</strong>
+      〒<%= @order.postcode %>
+      <%= @order.addresses %><br>
+      <%= @order.name %>様
+      
+      </div>
+  </div>
+</div>

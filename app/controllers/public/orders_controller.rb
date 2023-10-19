@@ -11,10 +11,11 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @cart_items = @customer.cart_items
     @order.postcode = @customer.postcode
-    @order.address = @customer.address
+    @order.addresses = @customer.address
     @order.name = @customer.last_name
     @postage = 800
-    @total = @cart_itmes.inject(0) { |sum, item| sum + }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total_pay = @total + @postage
     
     
   end
