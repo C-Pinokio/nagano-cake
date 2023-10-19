@@ -13,14 +13,10 @@ class Public::AddressesController < ApplicationController
   
   def create
     @address = Address.new(address_params)
-    # @address.customer_id = current_customer.id ログインできるようになったら消して下と入れ替える
-    @address.customer_id = (1)
-    
-    # @addresses = current_customer.addresses.all
-    @addresses = Address.all #ログインできるようになったら消して上と入れ替える
-    
+    @address.customer_id = current_customer.id
+    @addresses = current_customer.addresses.all
     @address.save
-
+    
     # if @address.save
       # flash[:notice] = "配送先の保存に成功しました"
       
