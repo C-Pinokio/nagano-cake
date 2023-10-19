@@ -99,7 +99,11 @@ ActiveRecord::Schema.define(version: 2023_10_17_051336) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "without_tax", null: false
+<<<<<<< HEAD
     t.integer "genre_id", null: false
+=======
+
+>>>>>>> 21030e35c1369ad14f7a897af288137eeb063368
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
