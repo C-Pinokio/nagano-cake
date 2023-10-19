@@ -1,0 +1,16 @@
+<div>
+  <%= image_tag @item.get_item_image(150,100) %>
+  
+  <h2><%= @item.name %></h2>
+  
+  <%= @item.introduction %></br>
+  
+  ¥<%= @item.without_tax %>（税込）
+</div>
+
+<table>
+  <tr>
+    <td></td>
+    <td><%= link_to "カートに入れる", cart_items_path %></td>
+  </tr>
+</table>

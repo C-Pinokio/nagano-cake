@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_10_18_051208) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "without_tax", null: false
+
     t.boolean "is_active", default: true, null: false
   end
 
