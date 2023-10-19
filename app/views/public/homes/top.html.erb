@@ -7,6 +7,15 @@
         購入には会員登録が必要になります。</p>
      
         <h3>新着商品</h3>
+        
+        <% @items.each do |item|%>
+        
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_item_image(150,100) %>
+          <% end %></br>
+          <%= item.name %></br>
+          ¥<%= item.without_tax %>
+        <% end %>
      </div>
   </div>
 </div>
