@@ -21,6 +21,6 @@ class Item < ApplicationRecord
   belongs_to :genre
   
   def  add_tax_price #単価(税込)
-    (self.without_tax * 1.1)
+    (self.without_tax * 1.1).round
   end
 end
