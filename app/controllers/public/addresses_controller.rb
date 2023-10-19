@@ -1,4 +1,5 @@
 class Public::AddressesController < ApplicationController
+  # before_action :authenticate_customer!
     
   def index
     @addresses = Address.all #current_customer.address.allへ変更すること
@@ -11,15 +12,25 @@ class Public::AddressesController < ApplicationController
   end
   
   def create
-    @address = current_customer.addresses.new(address_params)
-    @addresses = current_customer.addresses.all
-    if @address.save
-      flash[:notice] = "配送先の保存に成功しました"
+    @address = Address.new(address_params)
+    # @address.customer_id = current_customer.id ログインできるようになったら消して下と入れ替える
+    @address.customer_id = (1)
+    
+    # @addresses = current_customer.addresses.all
+    @addresses = Address.all #ログインできるようになったら消して上と入れ替える
+    
+    @address.save
+
+    # if @address.save
+      # flash[:notice] = "配送先の保存に成功しました"
+      
       redirect_to request.referer
-    else
-      render :index
-    end
+    # else
+      # render :index
+    # end
   end
+  
+  
   
   def update
     @address = Address.find(params[:id])
