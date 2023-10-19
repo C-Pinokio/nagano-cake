@@ -1,1 +1,13 @@
 <h2>商品一覧</h2>
+
+<% @items.each do |item| %>
+
+  <div>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.get_item_image(150,100) %>
+    <% end %>
+    <%= item.name %>
+    <%= item.without_tax %>
+  </div>
+
+<% end %>
