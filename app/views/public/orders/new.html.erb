@@ -4,20 +4,51 @@
       <h4>注文情報入力</h4>
     </div>
     <div　class="col-md-1">
-      <h5>支払方法</h5>
-      <%= form_with model: @order do |f| %>
+      <strong>支払方法</strong>
+      <%= form_with model: @order, url: confirm_orders_path do |f| %>
+        <!--クレジットカード選択欄-->
         <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], value: Order.payment_methods.key(0) %><br>
+        <!--銀行振込選択欄-->
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], value: Order.payment_methods.key(1) %>
-      
-        <h5>お届け先</h5>
-        <%= f.radio_button :address_option, 1 %>
-        <%= f.label :address_option, "ご自身の住所" %>
-        <%= f.select :address_id, options_from_collection_for_select(@customer.address.all, :id, :address_display) %>
-      
-      <% end %>
-      
         
-          
+        <!--お届け先選択フォーム-->
+        <strong>お届け先</strong>
+        <%= f.radio_button :select_address, 0, checked: true %>
+        <%= f.label :select_address, "ご自身の住所" %>
+        <p class="select pl-5">
+          〒<%= @customer.postcode %>
+            <%= @customer.address %></br>
+            <%= @customer.name %>
+        </p>
+        <% if current_customer.addresses.present? %>
+          <%= f.radio_button :select_address, 1 %>
+          <%= f.label :select_address, "登録済み住所から選択" %>
+          <p class="select ml-5">
+            <%= f.select :address_id, options_from_collection_for_select(@customer.addresses, :id, :address_display) %>
+          </p>
+        <% else %>
+          <p>※登録済住所は配送先登録後に選択できます。</p>
+        <% end %>
+        
+        <%= f.radio_button :select_address, 2 %>
+        <%= f.label :select_address, "新しいお届け先" %>
+        <p class="select pl-5">
+          <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+          <%= f.text_field :postcode, :size=>"25" %>
+          </br>
+          <%= f.label :address, "住所" %>
+          <%= f.text_field :address, :size=>"50" %>
+          </br>
+          <%= f.label :name, "宛名" %>
+          <%= f.text_field :name, :size=>"25" %>
+        </p>
+        <!--確認画面移行ボタン-->
+        <div class="text-center">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+        </div>
+      <% end %>    
     </div>
+  </div>    
+</div>
