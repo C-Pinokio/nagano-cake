@@ -1,13 +1,18 @@
 <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-2">
+      </div>
+      
+      <div class="col-md-10">
         <h2 class="">商品一覧</h2>
         <% @items.each do |item| %>
+          <div class="list-inline">
           <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_item_image(200,150) %></br>
+            <%= image_tag item.get_item_image(200,150) %>
           <% end %>
-          <%= item.name %></br>
-          ¥<%= item.without_tax %> 
+          <p><%= item.name %></p>
+          <p>¥<%= item.without_tax %></p>
+          </div>
         <% end %>
       </div>
     </div>
