@@ -4,11 +4,18 @@
       <p class="my-5">ようこそながのCAKEへ！</br>
         このサイトは、ケーキ販売のECサイトになります。</br>
         会員でない方も商品の閲覧はできますが、</br>
-        購入には会員登録が必要になります。
-        
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></p>
+        購入には会員登録が必要になります。</p>
      
         <h3>新着商品</h3>
+        
+        <% @items.each do |item|%>
+        
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_item_image(150,100) %>
+          <% end %></br>
+          <%= item.name %></br>
+          ¥<%= item.without_tax %>
+        <% end %>
      </div>
   </div>
 </div>
