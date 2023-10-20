@@ -1,4 +1,4 @@
-<%= form_with model: item, url: cart_items_path, method: :get, local:true do |f| %>
+<%= form_with model: cart_item, url: cart_items_path, method: :post, local:true do |f| %>
   <%= f.hidden_field :item_id, :value => item.id %>
   <%= f.select :amount, ['0', '1', '2', '3'], placeholder:"個数を選択"  %>
   <%= f.submit "カートに入れる", class: "btn btn-success" %>
