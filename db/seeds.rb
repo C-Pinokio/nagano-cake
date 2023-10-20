@@ -14,6 +14,7 @@ Genre.create!(
   name: 'クッキー',
 )
 
+
 Item.create!(
   genre_id: 1,
   name: 'イチゴケーキ',
