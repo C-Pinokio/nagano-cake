@@ -2,6 +2,7 @@ class Admin::CustomersController < ApplicationController
    before_action :authenticate_admin!
 
   def index
+    @customer = Customer.all
     @customers = Customer.page(params[:page])
   end
 
