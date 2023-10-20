@@ -11,16 +11,16 @@
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], value: Order.payment_methods.key(0) %><br>
         <!--銀行振込選択欄-->
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], value: Order.payment_methods.key(1) %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], value: Order.payment_methods.key(1) %><br>
         
         <!--お届け先選択フォーム-->
-        <strong>お届け先</strong>
+        <strong>お届け先</strong><br>
         <%= f.radio_button :select_address, 0, checked: true %>
         <%= f.label :select_address, "ご自身の住所" %>
         <p class="select pl-5">
           〒<%= @customer.postcode %>
             <%= @customer.address %></br>
-            <%= @customer.name %>
+            <%= @customer.last_name %><%= @customer.first_name %>
         </p>
         <% if current_customer.addresses.present? %>
           <%= f.radio_button :select_address, 1 %>

@@ -11,7 +11,7 @@
         
         <% if @item.is_active == true %><%# 商品が販売している場合 %>
           <p class="my-3">¥<%= @item.add_tax_price.to_s(:delimited) %>（税込）</p>
-          <%= render 'item', item: @item %>
+          <%= render 'item', item: @item, cart_item: @cart_item %>
         <% else %><%# 商品が販売を停止している場合%>
           <p>販売停止中</p>
         <% end %>

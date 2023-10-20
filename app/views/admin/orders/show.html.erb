@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+     <h4 class="d-inline-block bg-light">注文履歴詳細</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>購入者</th>
+          <td>
+            <%= link_to admin_customer_path(@order.customer_id), class:"link-order-customer" do %>
+            <%= @order.customer.full_name %> 様
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <td>
+            <%= @order.created_at.strftime("%Y/%m/%d") %>
+          </td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @order.postcode %><span> </span><%= @order.address %></br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <td>
+            <%= @order.pay_type_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+            <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+              <%= f.select :status, Order.statuses_i18n.invert %>
+              <%= f.submit "更新" , class: "btn btn-outline-secondary ml-4" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-9">
+      <table class="table border-bottom">
+        <thead>
+          <tr class="bg-light">
+            <th><b>商品名</b></th>
+            <th><b>単価（税込）</b></th>
+            <th><b>数量</b></th>
+            <th><b>小計</b></th>
+            <th><b>製作ステータス</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.product.name %></td>
+            <td><%= order_detail.include_tax.to_s(:delimited) %></td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= order_detail.total_price.to_s(:delimited) %></td>
+            <td>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                <%= f.submit "更新", class:"btn btn-outline-secondary ml-2" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

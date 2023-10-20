@@ -1,5 +1,5 @@
 <% if customer_signed_in? %>
-  <%= form_with model: item, url: cart_items_path, method: :pust, local:true do |f| %>
+  <%= form_with model: cart_item, url: cart_items_path, method: :post, local:true do |f| %>
     <%= f.hidden_field :item_id, :value => item.id %>
     <%= f.select :amount, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], placeholder:"個数を選択" %>
     <%= f.submit "カートに入れる", class: "btn btn-success" %>
