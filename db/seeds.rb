@@ -18,13 +18,13 @@ Item.create!(
   genre_id: 1,
   name: 'イチゴケーキ',
   introduction: 'とてもおいしいイチゴケーキです',
-  without_tax: '1000',
+  without_tax: '1,000',
   is_active: true
 )
 Item.create!(
   genre_id: 2,
   name: 'バナナケーキ',
   introduction: 'とてもおいしいバナナケーキです',
-  without_tax: '700',
+  without_tax: '7,00',
   is_active: true
 )
