@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = @customer.cart_items
     @order.postcode = @customer.postcode
     @order.addresses = @customer.address
-    @order.name = @customer.last_name
+    @order.name = @customer.last_name + @customer.first_name
     @postage = 800
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @total_pay = @total + @postage
@@ -25,6 +25,23 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    @order = current_customer.orders.new(order_params)
+    
+    if @order.save
+      current_customer.cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.order_id = @order.id
+        @order_detail.amount = cart_item.amount
+        @order_detail.include_tax = cart_item.item.add_tax_price 
+        @order_detail.save
+      end
+      redirect_to complete_orders_path
+      current_customer.cart_items.destroy_all
+    else
+      flash.now[:notice] = "入力情報を確認してください。"
+      redirect_to new_order_path
+    end
   end
   
   def index
