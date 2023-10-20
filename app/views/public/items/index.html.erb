@@ -20,6 +20,8 @@
           </div>
         <% end %>
       </div>
-      <%= paginate @items, class:"text-center" %>
+      <div class="d-flex justify-content-center mt-3 custom-pagination">
+        <%= paginate @items %>
+      </div>
     </div>
    </div>
