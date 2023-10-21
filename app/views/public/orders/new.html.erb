@@ -13,7 +13,7 @@
         <!--銀行振込選択欄-->
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], value: Order.payment_methods.key(1) %><br>
-        
+
         <!--お届け先選択フォーム-->
         <strong>お届け先</strong><br>
         <%= f.radio_button :select_address, 0, checked: true %>
@@ -32,7 +32,7 @@
         <% else %>
           <p>※登録済住所は配送先登録後に選択できます。</p>
         <% end %>
-        
+
         <%= f.radio_button :select_address, 2 %>
         <%= f.label :select_address, "新しいお届け先" %>
         <p class="select pl-5">
@@ -49,7 +49,7 @@
         <div class="text-center">
           <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
         </div>
-      <% end %>    
+      <% end %>
     </div>
-  </div>    
+  </div>
 </div>
