@@ -17,7 +17,25 @@ class Public::OrdersController < ApplicationController
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @total_pay = @total + @postage
     
-    
+    # select_addressで選択された番号をもとに住所を変更する。
+    if params[:order][:select_address] == "0"
+      @order.addresses = @customer.address
+      @order.postcode = @customer.postcode
+      @order.name =  @customer.last_name + @customer.first_name
+    elsif params[:order][:select_address] == "1"
+      address = Address.find(params[:order][:address_id])
+      @order.addresses = address.address
+      @order.postcode = address.postcode
+      @order.name = address.name
+    elsif params[:order][:select_address] == "2"
+      @order.addresses =params[:order][:address]
+      @order.postcode = params[:order][:postcode]
+      @order.name = params[:order][:name]
+    end
+    if @order.addresses.blank? || @order.postcode.blank? || @order.name.blank?
+      flash[:notice] = "正しい住所を入力してください。"
+      render :new
+    end
   end
   
   def complete
@@ -45,9 +63,12 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
+    @orders_all = current_customer.orders.all
+    
   end
   
   def show
+    @order = Order.find(params[:id])
   end
   
   private
