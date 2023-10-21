@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     end
   
     def after_sign_up_path_for(resoyrce)
-      root_path
+      customers_mypage_path
     end
   protected
   
