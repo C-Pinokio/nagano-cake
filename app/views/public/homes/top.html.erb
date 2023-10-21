@@ -1,24 +1,24 @@
-    <div class="text-center">
-      <p class="my-5">ようこそながのCAKEへ！</br>
-        このサイトは、ケーキ販売のECサイトになります。</br>
-        会員でない方も商品の閲覧はできますが、</br>
-        購入には会員登録が必要になります。</p>
-     </div>
-
-     <div class="texts-wrapper">
-       <div class="contents-title text-center">
+    <div class="container">
+      <div class="row">
+       <div class="col-7 text-center text-light mx-auto img1">
+        <p class="my-5">ようこそながのCAKEへ！</br>
+         このサイトは、ケーキ販売のECサイトになります。</br>
+         会員でない方も商品の閲覧はできますが、</br>
+         購入には会員登録が必要になります。</p>
+        </div>
+      </div>
+     <div class="texts-wrapper mt-3">
+       <div class="contents-title">
         <h3>新着商品</h3>
         <div class="row">
-          <% @items.each do |item|%>
-            <div class="col-md-3 my-4">
-              <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+           <% @items.each do |item|%>
+            <div class="col-md-2 my-4 mt-3">
+              <div class="card w-100 bg-transparent border-0">
                 <%= link_to item_path(item.id) do %>
                   <%= image_tag item.get_item_image(150,100) %>
                 <% end %>
-
-                <div class="card-body">
+                <div class="card-body" style="padding: 0;">
                   <%= item.name %></br>
-                  
                   <% if item.is_active == true %><%#商品が販売されている場合%>
                     ¥<%= item.add_tax_price %>
                   <% else %><%#販売が停止している%>
@@ -31,3 +31,4 @@
         </div>
       </div>
     </div>
+  </div>

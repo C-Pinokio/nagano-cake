@@ -10,12 +10,12 @@ ja:
           making: "製作中"
           prepare: "発送準備中"
           complete: "発送済み"
-        order_detail:
-          making_status:
-            impossible: "着手不可"
-            wait: "製作待ち"
-            making: "製作中"
-            complete: "製作完了"
+      order_detail:
+        making_status:
+          impossible: "着手不可"
+          wait: "製作待ち"
+          making: "製作中"
+          complete: "製作完了"
             
     activerecord:
       errors:
@@ -225,3 +225,10 @@ ja:
         long: "%Y/%m/%d %H:%M"
         short: "%m/%d %H:%M"
       pm: 午後
+    models:
+     order_detail:
+      making_statuses:
+        wait: "着手不可"
+        make_wait: "製作待ち"
+        making: "製作中"
+        finish: "制作完了"
