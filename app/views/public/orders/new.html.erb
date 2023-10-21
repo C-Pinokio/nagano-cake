@@ -1,7 +1,11 @@
 <div class= "container">
   <div class= "row">
     <div　class="col-md-2">
-      <%= flash.now[:notice] %>
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <h4>注文情報入力</h4>
     </div>
     <div　class="col-md-1">

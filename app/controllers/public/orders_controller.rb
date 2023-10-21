@@ -33,8 +33,8 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:name]
     end
     if @order.addresses.blank? || @order.postcode.blank? || @order.name.blank?
-      flash[:notice] = "正しい住所を入力してください。"
-      render :new
+      flash[:alert] = "新しいお届け先を入力してください。"
+      redirect_to new_order_path
     end
   end
   
@@ -63,8 +63,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders_all = current_customer.orders.all
-    
+    @orders_all = current_customer.orders
+    @orders = @orders_all.page(params[:page])
   end
   
   def show

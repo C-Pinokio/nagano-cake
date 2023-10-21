@@ -1,7 +1,12 @@
 <div class= "container">
   <div class= "row">
     <div class="col">
-      <%= flash[:notice] %>
+      <% if flash[:notice].present? || flash.now[:alert].present?  %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+          <% flash.now[:alert] %>
+        </div>
+      <% end %>
       <h4 class="my-3 ml-4">ショッピングカート</h4>
       <% if @cart_items.present? %>
         <div class="float-right mb-3">
@@ -20,11 +25,11 @@
           <tbody>
             <% @cart_items.each do |cart_item| %>
               <tr>
-                <td><%= cart_item.item.name %></td>
+                <td><%= image_tag cart_item.item.get_item_image(40,40) %><%= cart_item.item.name %></td>
                 <td>￥<%= cart_item.item.add_tax_price %></td>
                 <td style="text-align: center;">
                   <%= form_with model: cart_item do |f| %>
-                    <%= f.select :amount, *[1..10], selected: cart_item.amount, include_blank: "個数選択" %>
+                    <%= f.select :amount, *[1..10], selected: cart_item.amount %>
                     <%= f.submit "変更", class: "btn btn-success" %>
                   <% end %>
                 </td>

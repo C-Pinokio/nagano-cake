@@ -58,7 +58,7 @@
         <div class="text-center">
           <%= form_with model: @order, url: orders_path, method: :post do |f| %>
             <%= f.hidden_field :customer_id, :value => @customer.id %>
-            <%= f.hidden_field :total_price, :value => @total_pay %>
+            <%= f.hidden_field :total_price, :value => @total %>
             <%= f.hidden_field :name, :value => @order.name %>
             <%= f.hidden_field :postcode, :value => @order.postcode %>
             <%= f.hidden_field :addresses, :value => @order.addresses %>

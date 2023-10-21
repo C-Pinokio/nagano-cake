@@ -20,13 +20,13 @@
           <tbody>
             <% @orders_all.each do |order| %>
               <tr>
-                <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-                <td>
+                <td style="vertical-align: middle;"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+                <td style="vertical-align: middle;">
                   〒<%= order.postcode %><br>
                   <%= order.addresses %><br>
                   <%= order.name %>
                 </td>
-                <td>
+                <td style="vertical-align: middle;">
                   <% if order.order_details.size <= 3 %>
                     <% order.order_details.each do |order_detail| %>
                       <%= order_detail.item.name %><br>
@@ -36,19 +36,23 @@
                     <%= link_to "表示する", order_path(order), class: "btn btn-primary" %>へ
                   <% end %>
                 </td>
-                <td>￥<%= order.total_price %></td>
-                <td><%= order.status_i18n %></td>
-                <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+                <td style="vertical-align: middle;">￥<%= order.total_price %></td>
+                <td style="vertical-align: middle;"><%= order.status_i18n %></td>
+                <td style="vertical-align: middle;"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
               </tr>
             <% end %>
+            <div class="d-flex justify-content-center mt-3 custom-pagination">
+            <%= paginate @orders %>
+            </div>
+           
           </tbody>
+        </table>
       <% else %>
         <div class="text-center">
           <h2 class="mb-5">ご注文履歴がありません。</h2>
           <%= link_to "表示一覧へ", items_path, class: "btn btn-primary" %>
         </div>
       <% end %>
-      </table>
     </div>
   </div>
 </div>
