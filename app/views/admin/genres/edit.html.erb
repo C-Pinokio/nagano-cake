@@ -3,18 +3,9 @@
     <div class="col-10 mt-4">
       <h4 class="d-inline-block bg-light">ジャンル編集</h4>
     </div>
+    <%= render 'error' %>
   </div>
   <div class="row mt-4">
-    <% if @genre.errors.any? %>
-      <ul class="alert alert-danger" role="alert">
-      　<h6 class="alert-heading">
-          <%= @genre.errors.count %>件のエラーが発生しました
-        </h6>
-          <% @genre.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-          <% end %>
-      </ul>
-     <% end %>
     <div class="col-2">
     <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
       <%= f.label :name, "ジャンル名", style: "margin-right:75px;" %>

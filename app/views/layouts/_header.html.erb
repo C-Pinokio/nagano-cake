@@ -2,7 +2,7 @@
       <nav class="navbar navbar-expand-lg py-4 navbar-light">
         <div class = "container border-bottom">
           <%= link_to root_path, class: "mx-0" do %>
-            <%# image_tag "logo_image.png", alt: "LOGO", size: "280x70" %>
+            <% image_tag "logo.jpeg", alt: "LOGO", size: "280x70" %>
           <% end %>
           <% if customer_signed_in? %>
             <p class="mx-2">ようこそ、<%= current_customer.last_name %> 様</p>
