@@ -1,6 +1,9 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def show
     @customer = current_customer
+    @cart_item = current_customer.cart_items.new
   end
   
   def edit
