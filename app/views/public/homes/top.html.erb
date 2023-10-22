@@ -1,3 +1,4 @@
+<<<<<<< HEAD
    <div class="container">
   <div>
   <%= flash[:notice] %>
@@ -40,3 +41,42 @@
       </div>
     </div>
    </div>
+=======
+    <div class="container">
+      <div class="row">
+        <div class="col-3 mt-4">
+            <%= render 'genre' %>
+        </div>
+       <div class="col-7">
+         <div class="row" style="padding: 20px;">
+          <div class="col img1">
+            <p class="text-light" style="height: 250px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+              ようこそながのCAKEへ！</br>
+              このサイトは、ケーキ販売のECサイトになります。</br>
+              会員でない方も商品の閲覧はできますが、</br>
+              購入には会員登録が必要になります。</p>
+          </div>
+         </div>
+         <h3>新着商品</h3>
+      <div class="row">
+       <% @items.each do |item| %>
+        <div class="col-3 md-3 mt-3"> 
+         <div class="card w-100 bg-transparent border-0">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_item_image(150, 100) %>
+          <% end %>
+         <div class="card-body" style="padding: 0;">
+          <%= item.name %></br>
+            <% if item.is_active == true %>
+              ¥<%= item.add_tax_price %>
+            <% else %>
+              <p>販売停止中</p>
+            <% end %>
+          </div>
+          </div>
+        </div>
+       <% end %>
+     </div>
+    </div>
+  </div>
+>>>>>>> origin/develop

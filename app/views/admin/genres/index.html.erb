@@ -3,7 +3,9 @@
     <div class="col-10 mt-4">
       <h4 class="d-inline-block bg-light">ジャンル一覧・追加</h4>
     </div>
+    <%= render 'error' %>
   </div>
+  <%= render 'flash' %>
   <div class="row mt-4">
     <div class="col-2">
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
