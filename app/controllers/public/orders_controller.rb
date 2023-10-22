@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  
+  before_action :authenticate_customer!
   def new
     @order = Order.new
     @customer = current_customer
@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   
   def confirm
     @order = Order.new(order_params)
+
     @customer = current_customer
     @cart_items = @customer.cart_items
     @order.postcode = @customer.postcode
@@ -63,8 +64,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders_all = current_customer.orders
-    @orders = @orders_all.page(params[:page])
+    @orders_all = current_customer.orders.page(params[:page])
   end
   
   def show

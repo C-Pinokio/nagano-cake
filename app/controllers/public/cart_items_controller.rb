@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   
   def index
     @cart_item = current_customer.cart_items.new
@@ -19,17 +20,23 @@ class Public::CartItemsController < ApplicationController
   
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
+     # カート内に同一商品があるかないか
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       if @cart_item.amount.present?
         cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
         cart_item.amount += params[:cart_item][:amount].to_i
-        cart_item.update(amount: cart_item.amount)
-        cart_item.save
-        @cart_item.destroy
-        flash[:notice] = "商品を追加しました"
-        redirect_to cart_items_path
+        # 追加した商品の数が10個以上か以下か
+        if cart_item.amount <= 10
+          cart_item.save
+          @cart_item.destroy
+          flash[:notice] = "商品を追加しました。"
+          redirect_to cart_items_path
+        else
+          flash[:alert] = "一度に注文できる数は10個以下です。"
+          redirect_to cart_items_path
+        end
       else
-        flash[:alert] = "商品を追加できませんでした。/数量を選択してください"
+        flash[:alert] = "商品を追加できませんでした。/数量を選択してください。"
         redirect_to request.referer
       end
     elsif @cart_item.save
@@ -40,6 +47,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     end
   end
+
   
   def destroy
     cart_item = CartItem.find(params[:id])
