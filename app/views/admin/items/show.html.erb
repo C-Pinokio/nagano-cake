@@ -4,6 +4,7 @@
       <h4 class="d-inline-block bg-light">商品詳細</h4>
     </div>
   </div>
+  <%= render 'flash' %>
   <div class="row mt-5">
     <div class="col-4">
       <%= image_tag @item.get_item_image(500, 500), size: "300x200" %>
