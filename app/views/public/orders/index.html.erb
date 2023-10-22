@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <h4 class="my-3 ml-4">注文情報確認</h4>
+    <h2 class="bg-light my-3 ml-4">注文情報確認</h2>
   </div>
   <div class="row">
     <div class ="col">
       <!--注文履歴一覧-->
       <% if @orders_all.present? %>
-        <table class="table table-bordered">
+        <table class="table table-bordered mt-3">
           <thead>
             <tr class="bg-light">
               <th>注文日</th>
@@ -20,35 +20,40 @@
           <tbody>
             <% @orders_all.each do |order| %>
               <tr>
-                <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-                <td>
+                <td style="vertical-align: middle;"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+                <td style="vertical-align: middle;">
                   〒<%= order.postcode %><br>
                   <%= order.addresses %><br>
                   <%= order.name %>
                 </td>
-                <td>
+                <td style="vertical-align: middle;">
                   <% if order.order_details.size <= 3 %>
                     <% order.order_details.each do |order_detail| %>
                       <%= order_detail.item.name %><br>
                     <% end %>
                   <% else %>
-                    ※商品が多いため<br>
+                    ※注文商品が多いため<br>
                     <%= link_to "表示する", order_path(order), class: "btn btn-primary" %>へ
                   <% end %>
                 </td>
-                <td>￥<%= order.total_price %></td>
-                <td><%= order.status_i18n %></td>
-                <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+                <td style="vertical-align: middle;">￥<%= order.total_price %></td>
+                <td style="vertical-align: middle;"><%= order.status_i18n %></td>
+                <td style="vertical-align: middle; text-align: center;"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
               </tr>
             <% end %>
+
+           
           </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-3 custom-pagination">
+          <%= paginate @orders_all %>
+        </div>
       <% else %>
         <div class="text-center">
           <h2 class="mb-5">ご注文履歴がありません。</h2>
           <%= link_to "表示一覧へ", items_path, class: "btn btn-primary" %>
         </div>
       <% end %>
-      </table>
     </div>
   </div>
 </div>

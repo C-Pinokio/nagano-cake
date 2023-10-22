@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  
+  before_action :authenticate_customer!
   def new
     @order = Order.new
     @customer = current_customer
@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   
   def confirm
     @order = Order.new(order_params)
+
     @customer = current_customer
     @cart_items = @customer.cart_items
     @order.postcode = @customer.postcode
@@ -33,8 +34,8 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:name]
     end
     if @order.addresses.blank? || @order.postcode.blank? || @order.name.blank?
-      flash[:notice] = "正しい住所を入力してください。"
-      render :new
+      flash[:alert] = "新しいお届け先を入力してください。"
+      redirect_to new_order_path
     end
   end
   
@@ -63,8 +64,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders_all = current_customer.orders.all
-    
+    @orders_all = current_customer.orders.page(params[:page])
   end
   
   def show
