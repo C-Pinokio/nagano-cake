@@ -1,43 +1,56 @@
-<div class="col-md-6 offset-md-1">
-  <div>
-    <!--< flash[:notice] %>-->
-  </div>
-  <h4 class="my-3 ml-4">配送先/登録一覧</h4>
-  
-  <!--エラー文-->
-  <% if @address.errors.any? %>
-  <%= @address.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @address.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-  
-  <!--配送先フォーム-->
-  <%= render "form", address: @address %>
-  <!--配送先の編集/削除テーブル-->
-  <table class="table">
-    <thead>
-        <tr class="bg-light">
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
-          <th></th>
-        </tr>
-    </thead>
-    <tbody>
-      <% @addresses.each do |address| %>
-        <tr>
-          <td><%= address.postcode %></td>
-          <td><%= address.address %></td>
-          <td><%= address.name %></td>
-          <td>
-            <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
-            <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger" %>
-          </td>
-        </tr>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <% if flash[:notice].present? %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+      <h2 class="bg-light my-3 ml-4">配送先/登録一覧</h2>
+      
+      <!--エラー文-->
+      <% if @address.errors.any? %>
+        <div>
+          <%= @address.errors.count %>件のエラーが発生しました
+          <ul class="alert alert-danger" role="alert">
+            <% @address.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <!--配送先フォーム-->
+      <%= render "form", address: @address %>
+    </div>
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <th style="width: 20%;">郵便番号</th>
+            <th style="width: 30%;">住所</th>
+            <th style="width: 20%;">宛名</th>
+            <th style="width: 30%;"></th>
+          </tr>
+        </thead>
+        <% if @addresses.present? %>
+          <tbody>
+            <% @addresses.each do |address| %>
+              <tr>
+                <td><%= address.postcode %></td>
+                <td><%= address.address %></td>
+                <td><%= address.name %></td>
+                <td style="text-align: center;">
+                  <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+                  <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？" }%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <h2 class="text-center">配送先を登録してください。</h2>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
+

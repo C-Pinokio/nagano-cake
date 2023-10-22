@@ -1,8 +1,17 @@
 <div class= "container">
   <div class= "row">
     <div class="col">
-      <%= flash[:notice] %>
-      <h4 class="my-3 ml-4">ショッピングカート</h4>
+      <% if flash[:notice].present? %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert].present? %>
+        <div class="alert alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <h2 class="bg-light col-5 my-3">ショッピングカート</h2>
       <% if @cart_items.present? %>
         <div class="float-right mb-3">
           <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger",data: { confirm: "本当にカートの商品を全て削除しますか？" } %>
@@ -12,24 +21,24 @@
             <tr class="bg-light">
               <th style="width: 40%">商品名</th>
               <th style="width: 15%">単価(税込)</th>
-              <th style="width: 20%">数量</th>
+              <th style="width: 15%">数量</th>
               <th style="width: 15%">小計</th>
-              <th style="width: 10%"></th>
+              <th style="width: 15%"></th>
             </tr>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item| %>
               <tr>
-                <td><%= cart_item.item.name %></td>
-                <td>￥<%= cart_item.item.add_tax_price %></td>
+                <td style="vertical-align: middle;"><%= image_tag cart_item.item.get_item_image(40,40) %><%= cart_item.item.name %></td>
+                <td style="vertical-align: middle;">￥<%= cart_item.item.add_tax_price %></td>
                 <td style="text-align: center;">
                   <%= form_with model: cart_item do |f| %>
-                    <%= f.select :amount, *[1..10], selected: cart_item.amount, include_blank: "個数選択" %>
+                    <%= f.select :amount, *[1..10], selected: cart_item.amount %>
                     <%= f.submit "変更", class: "btn btn-success" %>
                   <% end %>
                 </td>
-                <td>￥<%= cart_item.subtotal.to_s(:delimited) %></td>
-                <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, data: { confirm: "本当にカートの商品を全て削除しますか？" } %></td>
+                <td style="vertical-align: middle;">￥<%= cart_item.subtotal.to_s(:delimited) %></td>
+                <td style="text-align: center;"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当にカートの商品を全て削除しますか？" } %></td>
                 <% end %>
               </tr>
           </tbody>
