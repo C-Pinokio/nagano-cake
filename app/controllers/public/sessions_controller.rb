@@ -24,10 +24,10 @@ class Public::SessionsController < Devise::SessionsController
      @customer = Customer.find_by(first_name: params[:customer][:first_name])
      if @customer
        if @customer.valid_password?(params[:customer][:pasword]) && (@customer.is_deleted == false)
-         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-         redirect_to new_registration_path(resource)
-        else
-          flash[:notice] = "項目を入力してください"
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_registration_path(resource)
+       else
+        flash[:notice] = "項目を入力してください"
        end
      end
    end
@@ -38,8 +38,8 @@ class Public::SessionsController < Devise::SessionsController
        if @customer.valid_password?(params[:customer][:pasword]) && (@customer.is_deleted == false)
          flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
          redirect_to new_registration_path(resource)
-        else
-          flash[:notice] = "項目を入力してください"
+       else
+         flash[:notice] = "項目を入力してください"
        end
      end
    end

@@ -5,6 +5,5 @@ class Public::HomesController < ApplicationController
   end
   
   def about
-    
   end
 end

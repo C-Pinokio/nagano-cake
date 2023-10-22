@@ -1,6 +1,9 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def show
     @customer = current_customer
+    @cart_item = current_customer.cart_items.new
   end
   
   def edit
@@ -9,8 +12,12 @@ class Public::CustomersController < ApplicationController
   
   def update
     @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customers_mypage_path
+    if @customer.update(customer_params)
+      flash[:notice] = "登録情報を変更しました"
+      redirect_to customers_mypage_path
+    else
+      render :edit
+    end
   end
   
   def confirm
