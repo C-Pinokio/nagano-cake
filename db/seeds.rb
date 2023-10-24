@@ -24,8 +24,8 @@ Item.create!(
 )
 Item.create!(
   genre_id: 2,
-  name: 'バナナケーキ',
-  introduction: 'とてもおいしいバナナケーキです',
+  name: 'バナナクッキー',
+  introduction: 'とてもおいしいバナナクッキーです',
   without_tax: '7,00',
   is_active: true
 )
