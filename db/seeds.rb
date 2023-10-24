@@ -23,6 +23,7 @@ Item.create!(
   is_active: true
 )
 Item.create!(
+<<<<<<< HEAD
   genre_id: 1,
   name: 'バナナケーキ',
   introduction: 'とてもおいしいバナナケーキです',
