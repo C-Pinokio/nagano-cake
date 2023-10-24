@@ -1,19 +1,14 @@
 <div class="container">
-  
-  <% if flash[:notice].present? %>
-    <div class="alert alert-success">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-  <h2 class="bg-light my-3 col-5">マイページ</h2>
+ <%= render 'public/orders/flash' %>
+  <h2 class="bg-light my-3 col-3">マイページ</h2>
 
   <div class="row">
-    <div class="col-5">
+    <div class="col-6">
 
       <table class="table table-borderless">
         <tr>
           <td><h2>登録情報</h2></td>
-          <td><%= link_to "編集する", customers_infomation_edit_path, class: 'btn btn-sm btn-success' %></td>
+          <td><%= link_to "編集する", customers_infomation_edit_path, class: 'btn btn-lg btn-success' %></td>
         </tr>
       </table>
       
