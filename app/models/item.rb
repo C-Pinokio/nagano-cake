@@ -23,4 +23,8 @@ class Item < ApplicationRecord
   def  add_tax_price #単価(税込)
     (self.without_tax * 1.1).round
   end
+  
+  def self.looks(word)
+    @item = Item.where("name LIKE?", "%#{word}%")
+  end
 end
