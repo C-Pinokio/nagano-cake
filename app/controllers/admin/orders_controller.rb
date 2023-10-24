@@ -16,17 +16,22 @@ class Admin::OrdersController < ApplicationController
     @order_details = OrderDetail.where(order_id: params[:id])
     if @order.update(order_params)
       if @order.status == "check"
-        @order_details.update_all(making_status: "wait")
+       @order_details.update_all(making_status: "wait")
       else
-        @order_details.each do |order_detail|
-          if order_detail.making_status == "making"
-            @order.update(status: "making")
-            break
+         making_status_complete = @order_details.all? { |order_detail| order_detail.making_status == "complete" }
+          if making_status_complete
+             @order.update(status: "prepare") 
+          else
+             @order_details.each do |order_detail|
+            if order_detail.making_status == "making"
+              @order.update(status: "making")
+              break
+            end
+           end
           end
-        end
-        if @order_details.all? { |order_detail| order_detail.making_status == "complete" }
-          @order.update(status: "prepare")
-        end
+          if making_status_complete
+            @order.update(status: "complete")
+          end
       end
     end
     redirect_to admin_order_path(@order)
