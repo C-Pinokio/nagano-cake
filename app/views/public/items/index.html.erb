@@ -13,7 +13,7 @@
           <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
               <%= link_to item_path(item.id) do %>
                   <%= image_tag item.get_item_image(300,200) %>
-                <% end %>
+              <% end %>
               <div class="card-body">
                 <%= item.name %></br>
                 <% if item.is_active == true %><%# 商品が販売している場合 %>

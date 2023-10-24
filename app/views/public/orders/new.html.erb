@@ -1,11 +1,7 @@
 <div class= "container">
   <div class= "row">
     <div　class="col-md-2">
-      <% if flash[:alert].present? %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
+      <%= render 'public/orders/flash' %>
       <h2 class="bg-light my-3 ml-4">注文情報入力</h2>
     </div>
     <div　class="col-md-6">
@@ -17,15 +13,14 @@
         <!--銀行振込選択欄-->
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], value: Order.payment_methods.key(1) %><br>
-
         <!--お届け先選択フォーム-->
         <strong>お届け先</strong><br>
         <%= f.radio_button :select_address, 0, checked: true %>
         <%= f.label :select_address, "ご自身の住所", value: 0 %>
         <p class="select pl-5">
           〒<%= @customer.postcode %>
-            <%= @customer.address %></br>
-            <%= @customer.last_name %><%= @customer.first_name %>
+          <%= @customer.address %></br>
+          <%= @customer.last_name %><%= @customer.first_name %> 様
         </p>
         <% if current_customer.addresses.present? %>
           <%= f.radio_button :select_address, 1 %>
@@ -36,22 +31,25 @@
         <% else %>
           <p>※登録済住所は配送先登録後に選択できます。</p>
         <% end %>
-
         <%= f.radio_button :select_address, 2 %>
-        <%= f.label :select_address, "新しいお届け先", value: 2 %>
-        <p class="select pl-5">
-          <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :postcode, :size=>"25" %>
-          </br>
-          <%= f.label :address, "住所" %>
-          <%= f.text_field :address, :size=>"50" %>
-          </br>
-          <%= f.label :name, "宛名" %>
-          <%= f.text_field :name, :size=>"25" %>
-        </p>
+        <%= f.label :select_address, "新しいお届け先", value: 2 %><br>
+        <table>
+          <tr>
+            <th style= "padding-right: 20px;"><%= f.label :postcode, "郵便番号(ハイフンなし)" %></th>
+            <td><%= f.text_field :postcode, :size=>"25", :placeholder => "0000000" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address, "住所" %></th>
+            <td><%= f.text_field :address, :size=>"50", :placeholder => "東京都渋谷区代々木神園町0-0" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "宛名" %></th>
+            <td><%= f.text_field :name, :size=>"25", :placeholder => "令和道子" %></td>
+          </tr>
+        </table>
         <!--確認画面移行ボタン-->
-        <div class="text-center">
-          <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+        <div class="text-center mt-5">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary btn-lg"%>
         </div>
       <% end %>
     </div>
