@@ -21,4 +21,3 @@ gem 'image_processing', '~> 1.2'
 gem 'font-awesome-rails'
   </code></pre>
 </div>
-
