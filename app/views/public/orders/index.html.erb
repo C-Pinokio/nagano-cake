@@ -33,7 +33,7 @@
                     <% end %>
                   <% else %>
                     ※注文商品が多いため<br>
-                    <%= link_to "表示する", order_path(order), class: "btn btn-primary" %>へ
+                    <%= link_to "表示する", order_path(order), class: "btn btn-primary btn-sm" %>へ
                   <% end %>
                 </td>
                 <td style="vertical-align: middle;">￥<%= order.total_price %></td>
@@ -41,8 +41,6 @@
                 <td style="vertical-align: middle; text-align: center;"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
               </tr>
             <% end %>
-
-           
           </tbody>
         </table>
         <div class="d-flex justify-content-center mt-3 custom-pagination">

@@ -18,27 +18,26 @@
         <% @cart_items.each do |cart_item| %>
           <tbody>
             <td><%= image_tag cart_item.item.get_item_image(50,50) %><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+            <td>￥<%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
             <td><%= cart_item.amount %></td>
-            <td><%= cart_item.subtotal %></td>
+            <td>￥<%= cart_item.subtotal %></td>
           </tbody>
         <% end %>
-      
       </table>
     </div>
     <div class="col-3">
       <table class="table table-bordered mt-2 mb-5">
         <tr>
           <td class="bg-light">送料</td>
-          <td><%= @postage %></td>
+          <td>￥<%= @postage %></td>
         </tr>
         <tr>
           <td class="bg-light">商品合計</td>
-          <td><%= @total %></td>
+          <td>￥<%= @total %></td>
         </tr>
         <tr>
           <td class="bg-light">請求金額</td>
-          <td><%= @postage + @total %></td>
+          <td>￥<%= @postage + @total %></td>
         </tr>
       </table>
     </div>
@@ -53,7 +52,7 @@
         <strong>お届け先</strong>
         〒<%= @order.postcode %>
         <%= @order.addresses %><br>
-        <%= @order.name %>様
+        <%= @order.name %> 様
       </p>
     </div>
   </div>
