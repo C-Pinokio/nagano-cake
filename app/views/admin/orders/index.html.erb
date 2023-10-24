@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mt-3">
+      <% if flash[:notice].present? %>
+        <div class="alert alert-success">
+         <%= flash[:notice] %>
+        </div>
+       <% end %>
       <h4 class="d-inline-block bg-light">注文履歴一覧</h4>
         <table class="table">
           <thead class="bg-light">

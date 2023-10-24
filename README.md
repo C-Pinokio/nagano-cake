@@ -1,25 +1,24 @@
-# ながのCAKE ECサイト
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](app/assets/images/top.jpg)
+# チーム　ピノキオ制作
+## ながのCAKE ECサイト
+![トップ画像](./bc17b189621cf699673c8d5b3c5447b7.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
+## ※実在しないためご注意ください。 ##
 
-Things you may want to cover:
+### 案件の背景
+元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。
+InstagramのDMやメールで通販の注文を受けていたが、情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至った。
 
-* Ruby version
+### 使用したGem
+<div>
+  <button class="copy-button" onclick="copyToClipboard()"></button>
+  <pre><code id="code-block">
+gem 'devise'
+gem 'kaminari'
+gem "enum_help"
+gem 'image_processing', '~> 1.2'
+gem 'font-awesome-rails'
+  </code></pre>
+</div>
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
