@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 # 顧客側のルーティング
   scope module: :public do
     root to: 'homes#top'
+    get 'search' => 'searches#search'
     get 'about' => 'homes#about'
     get 'customers/mypage' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
