@@ -10,7 +10,7 @@
 元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。
 InstagramのDMやメールで通販の注文を受けていたが、情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至った。
 
-### 使用したGen
+### 使用したGem
 <div>
   <button class="copy-button" onclick="copyToClipboard()"></button>
   <pre><code id="code-block">
@@ -21,3 +21,4 @@ gem 'image_processing', '~> 1.2'
 gem 'font-awesome-rails'
   </code></pre>
 </div>
+
