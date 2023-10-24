@@ -47,7 +47,6 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     end
   end
-
   
   def destroy
     cart_item = CartItem.find(params[:id])
@@ -58,7 +57,6 @@ class Public::CartItemsController < ApplicationController
   end
   
   def destroy_all
-    
     @cart_items = current_customer.cart_items.all
     if @cart_items.destroy_all
       flash[:notice] = "カート内が空になりました。"
@@ -67,6 +65,7 @@ class Public::CartItemsController < ApplicationController
   end
   
   private
+  
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
   end

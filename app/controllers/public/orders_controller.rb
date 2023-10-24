@@ -1,23 +1,18 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  
   def new
     @order = Order.new
     @customer = current_customer
-    
   end
   
   def confirm
     @order = Order.new(order_params)
-
     @customer = current_customer
     @cart_items = @customer.cart_items
-    @order.postcode = @customer.postcode
-    @order.addresses = @customer.address
-    @order.name = @customer.last_name + @customer.first_name
     @postage = 800
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @total_pay = @total + @postage
-    
     # select_addressで選択された番号をもとに住所を変更する。
     if params[:order][:select_address] == "0"
       @order.addresses = @customer.address
@@ -45,7 +40,6 @@ class Public::OrdersController < ApplicationController
   
   def create
     @order = current_customer.orders.new(order_params)
-    
     if @order.save
       current_customer.cart_items.each do |cart_item|
         @order_detail = OrderDetail.new
