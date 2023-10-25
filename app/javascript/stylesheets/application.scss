@@ -5,7 +5,7 @@ body {
     font-weight: 900;
 }
 
-.navbar.bg-brown {
+.navbar.bg-choco {
    background-image: url('/assets/choco.jpg');
    opacity: 0.8;
 }
@@ -16,6 +16,8 @@ body {
    background-position: center;
    background-repeat: no-repeat;
    opacity: 0.8;
+   width: 100%;
+   height: 120vh;
 }
 
 .footer-bg {
@@ -41,4 +43,9 @@ body {
   background-size: 50% 75%;
   font-size: 16px;
   line-height: 2; 
+}
+
+.bg-brown {
+  background-image: url('/assets/bg.jpg');
+  color: gold;
 }

@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-2">
+    <div class="col-2 mt-5">
       <%= render 'genre' %>
     </div>
     
-    <div class="col-4">
+    <div class="col-4 mt-5">
       <%= image_tag @item.get_item_image(400,550) %>
     </div>
     
-    <div class="col-6 text-center">
+    <div class="col-6 mt-5 text-center">
         <h2 class="my-5"><%= @item.name %></h2>
         <%= @item.introduction %></br>
 

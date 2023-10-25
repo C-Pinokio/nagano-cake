@@ -1,14 +1,12 @@
 <div class="container">
   <div class="texts-wrapper">
-    <div class="contents-title text-center">
+    <div class="contents-title">
       <div class="row">
-        
-        <div class="col-2">
+        <div class="col-2 mt-5">
           <%= render 'genre' %>
         </div>
-        
         <div class="col-9">
-          <h2 class="my-3 text-left">商品一覧(全<%= @item.count %>件)</h2>
+          <h2 class="mt-5 text-left bg-brown">商品一覧(全<%= @item.count %>件)</h2>
           <div class="row">
         <% @items.each do |item| %>
         <div class="col-md-3 my-4">
@@ -16,7 +14,6 @@
               <%= link_to item_path(item.id) do %>
                 <%= image_tag item.get_item_image(285,135) %>
               <% end %>
-              
               <div class="card-body">
                 <%= item.name %></br>
                 <% if item.is_active == true %><%# 商品が販売している場合 %>

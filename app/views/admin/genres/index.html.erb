@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mt-4">
-      <h4 class="d-inline-block bg-light">ジャンル一覧・追加</h4>
+    <div class="col-4 my-5 bg-brown">
+      <h3>ジャンル一覧・追加</h3>
     </div>
     <%= render 'error' %>
   </div>
   <%= render 'flash' %>
-  <div class="row mt-4">
+  <div class="row">
     <div class="col-2">
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <%= f.label :name, "ジャンル名", style: "margin-right:75px;" %>
@@ -20,9 +20,9 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-5 mt-5">
+    <div class="col-4 mt-5">
       <table class="table">
-        <thead class="bg-light">
+        <thead class="bg-brown">
           <th>ジャンル</th>
           <th></th>
         </thead>
@@ -30,7 +30,7 @@
           <% @genres.each do |genre| %>
           <tr>
             <td><%= genre.name %></td>
-            <td class="text-center">
+            <td class="text-right">
               <%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success" %>
             </td>
           </tr>

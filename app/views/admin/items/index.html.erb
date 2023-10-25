@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mt-3">
-      <h4 class="d-inline-block bg-light">商品一覧</h4>
+    <div class="col-8 my-5">
+      <h3 class="d-inline-block bg-brown">商品一覧　</h3>
        <% if flash[:notice].present? %>
         <div class="alert alert-success">
          <%= flash[:notice] %>
@@ -13,9 +13,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col mt-3">
+    <div class="col">
       <table class="table">
-        <thead class="bg-light">
+        <thead class="bg-brown">
           <th style="width: 10%">商品ID</th>
           <th style="width: 30%">商品名</th>
           <th style="width: 15%">税抜価格</th>

@@ -1,38 +1,28 @@
 <div class="container">
   <%= render 'public/orders/flash' %>
-  <div class="row">
-    <div class="mx-auto col-6 mt-5">
-      <div class="bg-light col-5">
+  <div class="row text-center">
+    <div class="mx-auto mt-5">
+      <div class="bg-brown col-6 mx-auto">
         <h2>ログイン</h2>
       </div>
-      
-      <div class="bg-light col-6">
+      <div class="bg-brown col-10 mx-auto">
         <p class="my-3">会員の方はこちらからログイン</p>
       </div>
-      
       <%= form_with model: @customer, url: new_customer_session_path do |f| %>
-      
         <table class="table table-borderless">
           <tr>
             <td><%= f.label :email, "メールアドレス" %></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </tr>
-          
           <tr>
             <td><%= f.label :password, "パスワード" %></td>
             <td><%= f.password_field :password, autocomplete: "new-password" %></td>
           </tr>
-          
-          <tr>
-            <td></td>
-            <td><%= f.submit "ログイン" %></td>
-          </tr>
         </table>
-        
-      <% end %> 
-    
+         <%= f.submit "ログイン" %>
+      <% end %>
     </div>
   </div>
-</div>
   <%= render "public/shared/links" %>
+</div>
 
