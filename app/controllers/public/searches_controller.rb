@@ -1,8 +1,8 @@
 class Public::SearchesController < ApplicationController
     
   def search
-    @genre_id = params[:genre_id]
-    @items = Item.where(genre_id: @genre_id)
-    @items_all = @items.page(params[:page])
+    genre_id = params[:genre_id]
+    @item_searches = Item.where(genre_id: genre_id)
+    @item_searches_all =  @item_searches.page(params[:page])
   end
 end
