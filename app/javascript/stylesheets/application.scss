@@ -1,9 +1,44 @@
 @use '~bootstrap/scss/bootstrap';
 
+body {
+    font-family: 'Kaisei Decol', sans-serif;
+    font-weight: 900;
+}
+
+.navbar.bg-brown {
+   background-image: url('/assets/choco.jpg');
+   opacity: 0.8;
+}
+
+.main-bg {
+   background-image: url('/assets/back.jpeg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   opacity: 0.8;
+}
+
+.footer-bg {
+  background-image: url('/assets/choco.jpg');
+  background-position: bottom center;
+  opacity: 0.8;
+}
+
 .img1 {
   background-image: url('/assets/top.jpg');
-  background-size: 90% auto;
+  background-size: 100% auto;
   background-position: left center;
   background-repeat: no-repeat;
-  opacity: 0.8;
+}
+
+.top-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-size: 50% 75%;
+  font-size: 16px;
+  line-height: 2; 
 }
