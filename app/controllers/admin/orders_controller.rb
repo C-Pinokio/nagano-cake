@@ -38,7 +38,8 @@ class Admin::OrdersController < ApplicationController
  end
  
  def customer_orders
-   
+     customer_id = params[:customer_id]
+     @orders = Order.where(customer_id: customer_id)
  end
 
   private

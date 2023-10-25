@@ -1,1 +1,25 @@
-<h1>こんにちは</h1>
+<div class="container">
+  <div class="row">
+    <h2><%= @orders %>さんの注文履歴</h2>
+    
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>購入日時</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+          <td><%= order.order_details.sum(:amount)%></td>
+          <td><%= order.status_i18n %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
