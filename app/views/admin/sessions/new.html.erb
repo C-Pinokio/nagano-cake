@@ -4,7 +4,11 @@
      <div class="bg-light col-5">
       <h4>管理者ログイン</h4>
      </div>
-
+     <% if flash[:notice].present? %>
+       <div class="alert alert-success">
+         <%= flash[:notice] %>
+       </div>
+      <% end %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
      <table class="table table-borderless">
       <tr>

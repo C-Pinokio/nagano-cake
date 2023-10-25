@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col mt-3">
      <h4 class="d-inline-block bg-light">注文履歴詳細</h4>
     </div>
   </div>
@@ -78,9 +78,9 @@
     </div>
     <div class="col-3 d-flex align-items-end">
       <table class="table table-borderless">
-        <tr><th class="font-weight-bold">商品合計</th><td><%= (@order.total_price - @order.postage).to_s(:delimited) %>円</td></tr>
+        <tr><th class="font-weight-bold">商品合計</th><td><%= (@order.total_price).to_s(:delimited) %>円</td></tr>
         <tr><th class="font-weight-bold">送料</th><td><%= @order.postage %>円</td></tr>
-        <tr><th class="font-weight-bold">ご請求額</th><th><%= @order.total_price.to_s(:delimited) %>円</th></tr>
+        <tr><th class="font-weight-bold">ご請求額</th><th><%= (@order.total_price + @order.postage).to_s(:delimited) %>円</th></tr>
       </table>
     </div>
    </div>

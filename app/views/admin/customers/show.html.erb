@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mt-3">
+    <div class="col-6 mt-3">
       <h4 class="d-inline-block bg-light">会員詳細</h4>
     </div>
   </div>
@@ -10,7 +10,7 @@
    </div>
   <% end %>
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col-10">
       <table class="table table-borderless">
         <tr>
           <td>会員ID</td>
@@ -50,8 +50,8 @@
         </tr>
         <tr>
           <td></td>
-          <td><%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success" %></td>
-          <td><%= link_to "注文履歴一覧を見る", admin_customer_path(@customer.id), class:"btn btn-primary" %></td>
+          <td><%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success btn-lg" %></td>
+          <td><%= link_to "注文履歴一覧を見る", admin_customer_path(@customer.id), class:"btn btn-primary btn-lg" %></td>
         </tr>
       </table>
     </div>
