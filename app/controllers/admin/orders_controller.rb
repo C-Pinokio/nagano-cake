@@ -36,6 +36,10 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to admin_order_path(@order)
  end
+ 
+ def customer_orders
+   
+ end
 
   private
 
