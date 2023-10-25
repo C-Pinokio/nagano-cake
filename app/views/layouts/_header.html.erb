@@ -29,8 +29,9 @@
                 <% end %>
               </ul>
             </div>
-            <div class="mt-2 text-right">
-              <%= render 'layouts/search' %>
+            <div class="search_form mt-2 text-right">
+              <%= text_field_tag :query, params[:query], placeholder: "Search" %>
+              <%= submit_tag "検索", class: "btn-sm btn-light" %>
             </div>
          </div>
         </div>
