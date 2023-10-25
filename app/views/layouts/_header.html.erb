@@ -30,8 +30,8 @@
               </ul>
             </div>
             <div class="search_form mt-2 text-right">
-              <%= text_field_tag :query, params[:query], placeholder: "Search" %>
-              <%= submit_tag "検索", class: "btn-sm btn-light" %>
+              <%= render "layouts/search" %>
+              <%= link_to "ユーザー検索", customer_search_path %>
             </div>
          </div>
         </div>
