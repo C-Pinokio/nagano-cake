@@ -36,6 +36,12 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to admin_order_path(@order)
  end
+ 
+ def customer_orders
+     customer_id = params[:customer_id]
+     @orders = Order.where(customer_id: customer_id)
+     @order = Order.find(params[:customer_id])
+ end
 
   private
 
