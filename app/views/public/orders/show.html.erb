@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <h2 class="bg-brown mb-5 ml-4 mt-5">注文履歴詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-8 float-left">
+      <strong>注文情報</strong>
+      <table class="table table-bordered mt-3">
+        <tr>
+          <th class="bg-brown">注文日</th>
+          <td><%= @order.created_at.strftime("20%y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th class="bg-brown" style="vertical-align: middle;">配送先</th>
+          <td>
+            〒<%= @order.postcode %><br>
+            <%= @order.addresses %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-brown">支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th class="bg-brown">ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <strong>注文金額</strong>
+      <table class="table table-bordered mt-3">
+        <tr>
+          <th class="bg-brown">商品合計</th>
+          <td>￥<%= @order.total_price %></td>
+        </tr>
+        <tr>
+          <th class="bg-brown">配送料</th>
+          <td>
+            ￥<%= @order.postage %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-brown">ご請求額</th>
+          <td>￥<%= (@order.total_price) + (@order.postage) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mt-3">
+      <strong>注文内容</strong>
+      <table class="table table-bordered mt-3 mb-5">
+        <thead>
+          <tr class="bg-brown">
+            <th width="60%">商品</th>
+            <th>単価(税込)</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td>￥<%= order_detail.include_tax %></td>
+              <td><%= order_detail.amount %></td>
+              <td>￥<%= order_detail.include_tax * order_detail.amount %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="texts-wrapper">
+    <div class="contents-title text-center">
+      <div class="row">
+        <div class="col-2  my-5 text-left">
+          <%= render 'public/items/genre' %>
+        </div>
+        <div class="col-9 text-left mt-5">
+          <% if @item_searches.present? %>
+            <h2 class="d-inline-block bg-brown ml-4 text-left">ジャンル検索結果(全<%= @item_searches.count %>件)</h2>
+              <%= render "search", results: @item_searches %>
+          <% else %>
+            <h2 class="d-inline-block bg-brown ml-4">ワード検索結果(全<%= @items.count %>件)</h2>
+              <%= render "search", results: @items %>
+          <% end %>
+          <div class="d-flex justify-content-center mt-3 custom-pagination">
+            <%= paginate @item_searches_all %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

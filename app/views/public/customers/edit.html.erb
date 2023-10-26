@@ -1,0 +1,61 @@
+<%= render 'public/addresses/error', obj: @customer %>
+<div class="container">
+  <div class="row">
+    <div class="col my-5">
+      <%= render 'public/addresses/error', obj: @customer %>
+      <h2 class="bg-brown col-4">会員情報編集</h2>
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-10">
+      <%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
+        <table class="table table-borderless">
+           <tr>
+              <td>氏名</td>
+              <td>
+               （姓） 　<%= f.text_field :last_name %>
+               <%= "　 " %>
+               （名） 　<%= f.text_field :first_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td>
+               （セイ） <%= f.text_field :last_name_kana %>
+               <%= "　 " %>
+               （メイ） <%= f.text_field :first_name_kana %>
+              </td>
+            </tr>
+           
+            <tr>
+              <td><%= f.label :postcode, "郵便番号" %></td>
+              <td>　　　　<%= f.text_field :postcode %></td>
+            </tr>
+            
+            <tr>
+              <td>住所</td>
+              <td>　　　　<%= f.text_field :address,  size:50  %></td>
+            </tr>
+            
+            <tr>
+              <td>電話番号</td>
+              <td>　　　　<%= f.text_field :phone_number %></td>
+            </tr>
+            
+            <tr>
+              <td>メールアドレス</td>
+              <td>　　　　<%= f.text_field :email %></td>
+            </tr>
+            
+            <tr>
+              <td></td>
+              <td><%= f.submit "編集内容を保存",class: 'btn btn-success btn-lg' %></td>
+              <td><%= link_to "退会する", customers_confirm_path, class:'btn btn-danger btn-lg' %></td>
+            </tr>
+        </table>
+        
+      <% end %>
+    </div>
+  </div>
+ </div>
+</div>

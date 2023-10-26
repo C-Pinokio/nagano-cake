@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="texts-wrapper">
+    <div class="contents-title">
+      <div class="row">
+        <div class="col-2 mt-5">
+          <%= render 'genre' %>
+        </div>
+        <div class="col-9">
+          <h2 class="mt-5 text-left bg-brown">商品一覧(全<%= @item.count %>件)</h2>
+          <div class="row">
+        <% @items.each do |item| %>
+        <div class="col-md-3 my-4">
+          <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_item_image(285,135) %>
+              <% end %>
+              <div class="card-body">
+                <%= item.name %></br>
+                <% if item.is_active == true %><%# 商品が販売している場合 %>
+                  ¥<%= item.add_tax_price.to_s(:delimited) %>
+                <% else %><%# 商品が販売を停止している場合%>
+                  <p>販売停止中</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+       </div>
+      </div>
+      
+      <div class="d-flex justify-content-center mt-3 custom-pagination">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>

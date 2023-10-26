@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-1">
+      <%= render 'public/orders/flash' %>
+      <h2 class="d-inline-block bg-brown my-5 ml-4">配送先/登録一覧</h2>
+      <!--エラー文-->
+      <%= render "error", obj: @address %>
+    </div>
+    <!--配送先フォーム-->
+    <div class="col-md-10 offset-md-1">
+      <%= render "form", address: @address %>
+    </div>
+    <div class="col-md-10 offset-md-1 mt-5">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-brown">
+            <th style="width: 20%;">郵便番号</th>
+            <th style="width: 30%;">住所</th>
+            <th style="width: 20%;">宛名</th>
+            <th style="width: 30%;"></th>
+          </tr>
+        </thead>
+        <% if @addresses.present? %>
+          <tbody>
+            <% @addresses.each do |address| %>
+              <tr>
+                <td><%= address.postcode %></td>
+                <td><%= address.address %></td>
+                <td><%= address.name %></td>
+                <td style="text-align: center;">
+                  <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+                  <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？" }%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <h2 class="text-center">配送先を登録してください。</h2>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

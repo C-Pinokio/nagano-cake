@@ -1,0 +1,27 @@
+<%= form_with model: address do |f| %>
+  <table>
+    <tr>
+      <th style= "padding: 10px 20px;"><%= f.label :postcode, "郵便番号(ハイフンなし)" %></th>
+      <td><%= f.text_field :postcode, :size=>"25", :placeholder => "0000000" %></td>
+    </tr>
+    <tr>
+      <th style= "padding: 10px 20px;"><%= f.label :address, "住所" %></th>
+      <td><%= f.text_field :address, :size=>"50", :placeholder => "東京都渋谷区代々木神園町0-0" %></td>
+    </tr>
+    <tr>
+      <th style= "padding: 10px 20px;"><%= f.label :name, "宛名" %></th>
+      <td><%= f.text_field :name, :size=>"25", :placeholder => "令和道子" %></td>
+      <td>
+        <div class="form-group">
+          <% if current_page?(addresses_path) %>
+            <%= f.submit "新規登録", class: "btn btn-success btn-md" %>
+          <% elsif %>
+            <%= f.submit "変更内容を保存", class: "btn btn-success btn-md" %>
+          <% else %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </table>
+  
+<% end %>
