@@ -1,4 +1,13 @@
-<%= form_with url: search_path, local: true, method: :get do |f| %>
-  <%= f.text_field :word, placeholder: "Search" %>
-  <%= f.submit "検索", class: "btn-sm btn-light" %>
+<!--管理者がログインしている場合は商品も顧客も検索できるように分岐-->
+<% if current_admin %>
+  <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+    <%= f.select :range, options_for_select([['顧客'], ['商品']]) %>
+    <%= f.text_field :word, placeholder: "Search" %>
+    <%= f.submit "search", class: "btn-sm btn-light" %>
+  <% end %>
+<% else %>
+  <%= form_with url: search_path, local: true, method: :get do |f| %>
+    <%= f.text_field :word, placeholder: "Search" %>
+    <%= f.submit "search", class: "btn-sm btn-light" %>
+  <% end %>
 <% end %>

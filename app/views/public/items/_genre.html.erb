@@ -6,13 +6,13 @@
   </thead>
   <tbody>
   	<%= form_with url: search_path, method: :get do |f| %>
-	  <% @genres.each do |genre| %>
-	    <tr>
+	  	<% @genres.each do |genre| %>
+	    	<tr>
       	  <td class="table-body">
-			<%= link_to genre.name, search_path(genre_id: genre.id) ,method: :get, class:"genre_search_name" %>
-	  	  </td>
-		</tr>
-	  <% end %>
-	<% end %>
+						<%= link_to genre.name, search_path(genre_id: genre.id) ,method: :get, class:"genre_search_name" %>
+	  	  	</td>
+				</tr>
+	  	<% end %>
+		<% end %>
   </tbody>
 </table>
