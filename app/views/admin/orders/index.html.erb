@@ -6,9 +6,9 @@
          <%= flash[:notice] %>
         </div>
        <% end %>
-      <h4 class="d-inline-block bg-light">注文履歴一覧</h4>
+      <h4 class="d-inline-block" >注文履歴一覧</h4>
         <table class="table">
-          <thead class="bg-light">
+          <thead class="bg-brown">
             <tr>
               <th style="width: 25%">購入日時</th>
               <th style="width: 30%">購入者</th>
@@ -23,7 +23,7 @@
                         <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
                     <% end %>
                 </td>
-                <td><%= order.customer.full_name %></td>
+                <td><%= link_to order.customer.full_name, customer_orders_admin_orders_path(customer_id: order.customer.id), method: :get %></td>
                 <td><%= order.order_details.sum(:amount) %></td>
                 <td><%= order.status_i18n %></td>
               </tr>

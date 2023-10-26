@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-    
+
   def search
     genre_id = params[:genre_id]
     @item_searches = Item.where(genre_id: genre_id)
@@ -18,5 +18,4 @@ class Public::SearchesController < ApplicationController
       @records = Item.search_for(@word)
     end
   end
-  
 end
