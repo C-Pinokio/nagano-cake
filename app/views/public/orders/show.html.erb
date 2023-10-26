@@ -7,11 +7,11 @@
       <strong>注文情報</strong>
       <table class="table table-bordered mt-3">
         <tr>
-          <th class="bg-light">注文日</th>
+          <th class="bg-brown">注文日</th>
           <td><%= @order.created_at.strftime("20%y/%m/%d") %></td>
         </tr>
         <tr>
-          <th class="bg-light" style="vertical-align: middle;">配送先</th>
+          <th class="bg-brown" style="vertical-align: middle;">配送先</th>
           <td>
             〒<%= @order.postcode %><br>
             <%= @order.addresses %><br>
@@ -19,11 +19,11 @@
           </td>
         </tr>
         <tr>
-          <th class="bg-light">支払方法</th>
+          <th class="bg-brown">支払方法</th>
           <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
-          <th class="bg-light">ステータス</th>
+          <th class="bg-brown">ステータス</th>
           <td><%= @order.status_i18n %></td>
         </tr>
       </table>
@@ -32,17 +32,17 @@
       <strong>注文情報</strong>
       <table class="table table-bordered mt-3">
         <tr>
-          <th class="bg-light">商品合計</th>
+          <th class="bg-brown">商品合計</th>
           <td>￥<%= @order.total_price %></td>
         </tr>
         <tr>
-          <th class="bg-light">配送料</th>
+          <th class="bg-brown">配送料</th>
           <td>
             ￥<%= @order.postage %>
           </td>
         </tr>
         <tr>
-          <th class="bg-light">ご請求額</th>
+          <th class="bg-brown">ご請求額</th>
           <td>￥<%= (@order.total_price) + (@order.postage) %></td>
         </tr>
       </table>
@@ -53,7 +53,7 @@
       <strong>注文内容</strong>
       <table class="table table-bordered mt-3 mb-5">
         <thead>
-          <tr class="bg-light">
+          <tr class="bg-brown">
             <th width="60%">商品</th>
             <th>単価(税込)</th>
             <th>個数</th>
