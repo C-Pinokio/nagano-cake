@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show, :update, :index]
+    resources :orders, only: [:show, :update, :index] do
+      collection do
+        get 'customer_orders'
+      end
+    end
     resources :order_details, only: [:update]
     end
 
@@ -23,7 +27,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'search' => 'searches#search'
-    get 'item/search' => "searches#item_search"#商品名検索
+    get 'customer/search' => "searches#customer_search"#商品名検索
     get 'about' => 'homes#about'
     get 'customers/mypage' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
