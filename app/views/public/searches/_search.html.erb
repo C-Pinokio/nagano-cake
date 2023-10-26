@@ -1,5 +1,6 @@
+<div class="row">
 <% results.each do |item| %>
-  <div class="col-md-3 my-4">
+  <div class="col-md-3 my-5">
     <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
       <%= link_to item_path(item.id) do %>
         <%= image_tag item.get_item_image(285,135) %>
@@ -15,3 +16,4 @@
     </div>
   </div>  
 <% end %>
+</div>

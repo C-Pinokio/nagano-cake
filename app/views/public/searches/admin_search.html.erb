@@ -2,10 +2,10 @@
   <div class="row">
     <% if @records.present? %>
       <% if @range == "顧客" %>
-      　<div class="col-10 mt-3">
-          <h4 class="d-inline-block bg-brown">顧客の検索結果 "<%= @word %>"(全 <%= @records.count %> 件)</h4>
+      　<div class="col-5 my-5 bg-brown">
+          <h4>顧客の検索結果 "<%= @word %>"(全 <%= @records.count %> 件)</h4>
         </div>  
-        <div class="col-9 mx-auto mt-3">
+        <div class="col-9 mx-auto">
           <table class="table table-bordered">
             <thead>
               <tr class="bg-brown">
@@ -32,10 +32,10 @@
           </table>
         </div> 
       <% else %>
-        <div class="col-10 mt-3">
-          <h4 class="d-inline-block bg-brown">商品の検索結果 "<%= @word %>"(全 <%= @records.count %> 件)</h4>
+        <div class="col-6 my-5 bg-brown">
+          <h4>商品の検索結果 "<%= @word %>"(全 <%= @records.count %> 件)</h4>
         </div>  
-        <div class="col-9 mx-auto mt-3">
+        <div class="col-9 mx-auto">
           <table class="table table-bordered">
             <thead>
               <tr class="bg-brown">
