@@ -2,12 +2,16 @@
 <div>
   <h2 class="bg-brown my-5 ml-xl-5 col-2">会員情報編集</h2>
 </div>
-
 <div class="container">
   <div class="row">
+    <div class="col my-5">
+      <%= render 'public/addresses/error', obj: @customer %>
+      <h2 class="bg-brown col-4">会員情報編集</h2>
+    </div>
+  </div>
+   <div class="row">
     <div class="col-10">
       <%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
-        
         <table class="table table-borderless">
            <tr>
               <td>氏名</td>
@@ -56,4 +60,5 @@
       <% end %>
     </div>
   </div>
+ </div>
 </div>
