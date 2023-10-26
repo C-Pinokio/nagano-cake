@@ -9,7 +9,14 @@ class Public::SearchesController < ApplicationController
     @genres = Genre.all
   end
   
-  def customer_search
+  def admin_search
+    @range = params[:range]
+    @word = params[:word]
+    if @range == "顧客"
+      @records = Customer.search_by_full_name(@word)
+    else
+      @records = Item.search_for(@word)
+    end
   end
   
 end

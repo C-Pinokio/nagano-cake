@@ -38,4 +38,9 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
   
+  def self.search_by_full_name(query)
+    query.delete!(' ')
+    Customer.where("first_name || ' ' || last_name LIKE ?", "%#{query}%")
+  end
+
 end

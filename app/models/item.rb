@@ -27,4 +27,8 @@ class Item < ApplicationRecord
   def self.looks(word)
     @item = Item.where("name LIKE?", "%#{word}%")#入力したwordが商品の名前に引っかかっているか
   end
+  
+  def self.search_for(word)
+    Item.where('name LIKE ?', '%' + word + '%')
+  end
 end
